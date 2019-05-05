@@ -21,8 +21,8 @@ public class RuntimeMeshLoader : ModuleRules
 
         PublicIncludePaths.AddRange(
 			new string[] {
-				"RuntimeMeshLoader/Public",
-                Path.Combine(ThirdPartyPath, "assimp/include")
+//				"RuntimeMeshLoader/Public",
+//               Path.Combine(ThirdPartyPath, "assimp/include")
 				// ... add public include paths required here ...
 			}
 		);
@@ -68,10 +68,17 @@ public class RuntimeMeshLoader : ModuleRules
 
         if ((Target.Platform == UnrealTargetPlatform.Win64) || (Target.Platform == UnrealTargetPlatform.Win32))
         {
+            string assimplibpath = Path.Combine(ThirdPartyPath, "assimp/include");
+            PublicIncludePaths.Add(assimplibpath);
+
             string PlatformString = (Target.Platform == UnrealTargetPlatform.Win64) ? "Win64" : "Win32";
             PublicAdditionalLibraries.Add(Path.Combine(ThirdPartyPath, "assimp/lib",PlatformString, "assimp-vc140-mt.lib"));
 
-            RuntimeDependencies.Add(new RuntimeDependency(Path.Combine(ThirdPartyPath, "assimp/bin",PlatformString, "assimp-vc140-mt.dll")));
+            RuntimeDependencies.Add(Path.Combine(ThirdPartyPath, "assimp/bin",PlatformString, "assimp-vc140-mt.dll"));
+
+            
+           
+            
         }
 		else if(Target.Platform == UnrealTargetPlatform.Mac)
 		{

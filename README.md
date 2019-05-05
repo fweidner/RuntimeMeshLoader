@@ -43,3 +43,6 @@ Q3D
 ASSBIN (Assimp custom format)  
 glTF (partial)  
 3MF  
+
+## Requirements
+* in your build.cs of the project, add "ProceduralMeshComponent" to the PublicDependencyModuleNames.
